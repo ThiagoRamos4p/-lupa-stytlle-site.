@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LUPA STYTLLE — Protocolo Visão Blindada 360°</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --card: #ffffff;
+      --accent: #00ff00;
+      --accent-dark: #00cc00;
+      --muted: #9b9b9b;
+      --glass: rgba(255, 255, 255, 0.06);
+      --maxw: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: Inter, system-ui, Arial, Helvetica, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      height: 64px;
+      width: 64px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--accent);
+    }
+
+    .brand-subtitle {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    nav a {
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: transparent;
+      color: #fff;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background: var(--glass);
+      color: var(--accent);
+    }
+
+    .cta {
+      background: var(--accent);
+      color: #000;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .cta:hover {
+      background: var(--accent-dark);
+      transform: scale(1.05);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 36px;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .hero .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 12px;
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      margin: 12px 0 16px;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    .hero p {
+      color: #e6e6e6;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--glass);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #fff;
+      font-weight: 700;
+      margin-top: 12px;
+      font-size: 12px;
+    }
+
+    .hero-right {
+      background: linear-gradient(180deg, rgba(0, 255, 0, 0.1), transparent);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      border: 1px solid rgba(0, 255, 0, 0.2);
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .hero-caption {
+      margin-top: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    /* ===== BENEFITS (Visão Blindada 360°) ===== */
+    .benefits {
+      display: flex;
+      gap: 18px;
+      justify-content: space-between;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+
+    .benefit {
+      flex: 1;
+      background: var(--glass);
+      padding: 16px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid rgba(0, 255, 0, 0.1);
+      transition: all 0.3s ease;
+      min-width: 200px;
+    }
+
+    .benefit:hover {
+      background: rgba(0, 255, 0, 0.05);
+      border-color: rgba(0, 255, 0, 0.3);
+    }
+
+    .benefit-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .benefit-title {
+      display: block;
+      margin-top: 8px;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .benefit-desc {
+      display: block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: #e6e6e6;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      margin-top: 48px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin: 24px 0;
+    }
+
+    .section-title h3 {
+      font-size: 28px;
+      margin: 0;
+      color: #fff;
+    }
+
+    .section-title a {
+      color: var(--muted);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .section-title a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== GRID & CARDS ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      color: #111;
+      border-radius: 12px;
+      padding: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 255, 0, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .card-title {
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .old {
+      color: var(--muted);
+      text-decoration: line-through;
+      font-size: 13px;
+    }
+
+    .now {
+      font-weight: 800;
+      color: #00cc00;
+      font-size: 18px;
+    }
+
+    .buy {
+      display: block;
+      margin-top: 12px;
+      background: #111;
+      color: var(--accent);
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      border: 2px solid var(--accent);
+    }
+
+    .buy:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      margin-top: 48px;
+      padding: 30px 0;
+      color: var(--muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    footer strong {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    footer-desc {
+      margin-top: 6px;
+      max-width: 420px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    footer-contact {
+      text-align: right;
+    }
+
+    footer-contact-label {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer-contact-value {
+      margin-top: 6px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* ===== CART ===== */
+    .cart-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: var(--accent);
+      color: #000;
+      padding: 14px 18px;
+      border-radius: 999px;
+      z-index: 1000;
+      box-shadow: 0 6px 20px rgba(0, 255, 0, 0.4);
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cart-btn:hover {
+      background: var(--accent-dark);
+      transform: scale(1.1);
+    }
+
+    .cart-panel {
+      position: fixed;
+      right: 20px;
+      bottom: 80px;
+      width: 360px;
+      background: #fff;
+      color: #111;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      display: none;
+      z-index: 1000;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .cart-panel h4 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      color: #111;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-title {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .cart-item-price {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .cart-item-controls {
+      text-align: right;
+    }
+
+    .cart-item-controls button {
+      background: #f0f0f0;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 700;
+      margin: 0 2px;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 800;
+      margin-top: 12px;
+      font-size: 16px;
+      color: #111;
+    }
+
+    .whatsapp-btn {
+      display: block;
+      margin-top: 12px;
+      background: #25D366;
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      background: #1fa857;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right img {
+        height: 220px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero h2 {
+        font-size: 28px;
+      }
+
+      .benefits {
+        flex-direction: column;
+      }
+
+      .benefit {
+        min-width: auto;
+      }
+
+      .cart-panel {
+        width: 90vw;
+        right: 5vw;
+      }
+
+      footer-content {
+        flex-direction: column;
+      }
+
+      footer-contact {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ===== HEADER ===== -->
+    <header>
+      <div class="brand">
+        <img src="logo.png" alt="LUPA STYTLLE" />
+        <div>
+          <h1>LUPA STYTLLE</h1>
+          <div class="brand-subtitle">VISÃO BLINDADA 360° — Estilo & Proteção</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#destaques">Destaques</a>
+        <a href="#novidades">Novidades</a>
+        <a href="#protocolo">Protocolo</a>
+        <a class="cta" href="#destaques">Compre agora</a>
+      </nav>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+      <div>
+        <div class="eyebrow">⚡ Tecnologia Exclusiva</div>
+        <h2>Os Únicos Óculos do Brasil com o Protocolo Visão Blindada 360°</h2>
+        <p>Enquanto outras lojas vendem réplicas, nós entregamos proteção e estilo. Cada peça é inspecionada em nosso laboratório para garantir resistência a impactos, proteção UV real e conforto anatômico. Isso não é só um óculos, é um LUPA STYTLLE.</p>
+        <span class="badge">✓ Estoque no Brasil • ✓ Fotos Reais • ✓ Envio Imediato</span>
+
+        <div class="benefits" style="margin-top: 24px;">
+          <div class="benefit">
+            <div class="benefit-icon">🚚</div>
+            <span class="benefit-title">Entrega Rápida</span>
+            <span class="benefit-desc">Estoque próprio</span>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">📸</div>
+            <span class="benefit-title">Fotos Reais</span>
+            <span class="benefit-desc">Você vê antes de receber</span>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">💬</div>
+            <span class="benefit-title">Suporte</span>
+            <span class="benefit-desc">WhatsApp & Troca Fácil</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <img src="banner.png" alt="Visão Blindada 360°" />
+        <div class="hero-caption">Proteção + Estilo Garantidos</div>
+      </div>
+    </section>
+
+    <!-- ===== PROTOCOLO VISÃO BLINDADA 360° ===== -->
+    <section id="protocolo" class="section">
+      <div class="section-title">
+        <h3>🔬 Protocolo Visão Blindada 360°</h3>
+      </div>
+      <p style="color: #e6e6e6; margin-bottom: 24px; font-size: 16px;">Todo óculos LUPA STYTLLE passa por 4 testes rigorosos de qualidade em nosso laboratório. Veja por que somos diferentes:</p>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-icon">🛡️</div>
+          <span class="benefit-title">Prova de Impacto</span>
+          <span class="benefit-desc">Lentes e armações testadas para aguentar o uso intenso do dia a dia. Menos preocupação, mais durabilidade.</span>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">☀️</div>
+          <span class="benefit-title">Proteção UV400 Real</span>
+          <span class="benefit-desc">Validamos com equipamento profissional se a proteção UV é 400. Seus olhos blindados contra os raios solares.</span>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">🔧</div>
+          <span class="benefit-title">Montagem Firme</span>
+          <span class="benefit-desc">Checamos cada parafuso e encaixe. Nossos óculos têm a firmeza e o ajuste que você espera de um produto premium.</span>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">😊</div>
+          <span class="benefit-title">Conforto Anatômico</span>
+          <span class="benefit-desc">O encaixe no rosto é perfeito. Leveza e design pensados para você usar por horas sem desconforto.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DESTAQUES ===== -->
+    <section id="destaques" class="section">
+      <div class="section-title">
+        <h3>Destaques</h3>
+        <a href="#novidades">Ver todos ›</a>
+      </div>
+      <div class="grid" id="productsGrid"></div>
+    </section>
+
+    <!-- ===== NOVIDADES ===== -->
+    <section id="novidades" class="section">
+      <div class="section-title">
+        <h3>Novidades</h3>
+        <a href="#promocoes">Ver todos ›</a>
+      </div>
+      <div class="grid" id="novidadesGrid"></div>
+    </section>
+
+    <!-- ===== PROMOÇÕES ===== -->
+    <section id="promocoes" class="section">
+      <div class="section-title">
+        <h3>Promoções</h3>
+        <a href="#destaques">Voltar ›</a>
+      </div>
+      <div class="grid" id="promoGrid"></div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <footer-content>
+        <div>
+          <strong>LUPA STYTLLE</strong>
+          <footer-desc>Loja especializada em óculos com tecnologia VISÃO BLINDADA 360°. Selecionamos os melhores modelos e garantimos a qualidade que você merece. Enviamos para todo o Brasil.</footer-desc>
+        </div>
+        <footer-contact>
+          <footer-contact-label>Atendimento</footer-contact-label>
+          <footer-contact-value>WhatsApp: <span id="wa-number">(81) 99999-9999</span></footer-contact-value>
+          <footer-contact-label style="margin-top: 12px;">Pagamento via PIX • Entrega Rápida</footer-contact-label>
+        </footer-contact>
+      </footer-content>
+    </footer>
+  </div>
+
+  <!-- ===== CART & WHATSAPP ===== -->
+  <button class="cart-btn" id="openCart">🛒 Carrinho (0)</button>
+  <div class="cart-panel" id="cartPanel">
+    <h4>Seu Pedido</h4>
+    <div id="cartList"></div>
+    <div class="cart-total"><span>Total</span><span id="cartTotal">R$ 0,00</span></div>
+    <a id="checkoutWa" class="whatsapp-btn" href="#">✓ Finalizar pelo WhatsApp</a>
+  </div>
+
+  <script>
+    // ========== DADOS DOS PRODUTOS ==========
+    // Estrutura: {id, title, price (atual), old (preço antigo), img, category}
+    // CATEGORIA: 'destaque', 'novidade', 'promo'
+    
+    const products = [
+      // DESTAQUES
+      {
+        id: 1,
+        title: 'JULIET - PLASMA GOLD CAFÉ + STRAP',
+        price: 229.99,
+        old: 300,
+        img: 'imagesproduto1.png.jpg',
+        category: 'destaque'
+      },
+      {
+        id: 2,
+        title: 'JULIET - BEGE CRISTAL',
+        price: 229.99,
+        old: 300,
+        img: 'imagesproduto2.png.jpg',
+        category: 'destaque'
+      },
+      {
+        id: 3,
+        title: 'JULIET - BEGE VIOLETA ESCURO',
+        price: 229.99,
+        old: 300,
+        img: 'imagesproduto3.png.jpg',
+        category: 'destaque'
+      },
+      // NOVIDADES
+      {
+        id: 4,
+        title: 'RADAR EV - LENTE VERMELHA',
+        price: 159.99,
+        old: 220,
+        img: 'imagesproduto4.png.jpg',
+        category: 'novidade'
+      },
+      {
+        id: 5,
+        title: 'BLADE - LENTE TRANSPARENTE',
+        price: 159.99,
+        old: 220,
+        img: 'imagesproduto5.png.jpg',
+        category: 'novidade'
+      }
+    ];
+
+    // ========== FUNÇÕES AUXILIARES ==========
+    function moneyBR(val) {
+      return 'R$ ' + val.toFixed(2).replace('.', ',');
+    }
+
+    function renderCard(p) {
+      const discount = Math.round(((p.old - p.price) / p.old) * 100);
+      return `
+        <div class="card" data-id="${p.id}">
+          <img src="${p.img}" alt="${p.title}">
+          <div style="position: relative;">
+            <div style="position: absolute; top: -8px; right: 0; background: var(--accent); color: #000; padding: 4px 8px; border-radius: 4px; font-weight: 700; font-size: 12px;">-${discount}%</div>
+            <div class="card-title">${p.title}</div>
+            <div class="price">
+              <div class="old">${moneyBR(p.old)}</div>
+              <div class="now">${moneyBR(p.price)}</div>
+            </div>
+            <a class="buy" href="#" data-id="${p.id}">Comprar</a>
+          </div>
+        </div>
+      `;
+    }
+
+    // ========== POPULAR AS GRIDS ==========
+    const grid = document.getElementById('productsGrid');
+    const novGrid = document.getElementById('novidadesGrid');
+    const promoGrid = document.getElementById('promoGrid');
+
+    // Destaques: primeiros 3 produtos
+    grid.innerHTML = products.filter(p => p.category === 'destaque').map(renderCard).join('');
+
+    // Novidades: produtos com categoria 'novidade'
+    novGrid.innerHTML = products.filter(p => p.category === 'novidade').map(renderCard).join('');
+
+    // Promoções: produtos com desconto > 25%
+    promoGrid.innerHTML = products.filter(p => ((p.old - p.price) / p.old) > 0.25).map(renderCard).join('');
+
+    // ========== CARRINHO ==========
+    let cart = [];
+    const openCart = document.getElementById('openCart');
+    const cartPanel = document.getElementById('cartPanel');
+    const cartList = document.getElementById('cartList');
+    const cartTotalSpan = document.getElementById('cartTotal');
+    const checkoutWa = document.getElementById('checkoutWa');
+
+    function updateCartUI() {
+      const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+      document.getElementById('openCart').innerText = `🛒 Carrinho (${totalItems})`;
+
+      cartList.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.img}" />
+          <div class="cart-item-info">
+            <div class="cart-item-title">${item.title}</div>
+            <div class="cart-item-price">${moneyBR(item.price)} x ${item.qty}</div>
+          </div>
+          <div class="cart-item-controls">
+            <button onclick="changeQty(${item.id}, -1)">−</button>
+            <button onclick="changeQty(${item.id}, 1)">+</button>
+          </div>
+        </div>
+      `).join('');
+
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      cartTotalSpan.innerText = moneyBR(total);
+
+      // Build WhatsApp link
+      const waNumber = document.getElementById('wa-number').innerText.replace(/[^0-9]/g, '');
+      const itemsText = cart.map(i => `${i.qty}x ${i.title} - R$ ${i.price.toFixed(2)}`).join('%0A');
+      const text = encodeURIComponent(`Olá! Quero finalizar meu pedido na LUPA STYTLLE:%0A${itemsText}%0ATotal: R$ ${total.toFixed(2)}`);
+      checkoutWa.href = `https://wa.me/${waNumber}?text=${text}`;
+      checkoutWa.target = '_blank';
+    }
+
+    function addToCart(id) {
+      const p = products.find(x => x.id == id);
+      const existing = cart.find(x => x.id == id);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ ...p, qty: 1 });
+      }
+      updateCartUI();
+      cartPanel.style.display = 'block';
+    }
+
+    function changeQty(id, delta) {
+      const idx = cart.findIndex(x => x.id == id);
+      if (idx > -1) {
+        cart[idx].qty += delta;
+        if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      }
+      updateCartUI();
+    }
+
+    // ========== EVENT LISTENERS ==========
+    document.body.addEventListener('click', function(e) {
+      if (e.target.matches('.buy')) {
+        e.preventDefault();
+        const id = parseInt(e.target.dataset.id, 10);
+        addToCart(id);
+      }
+    });
+
+    openCart.addEventListener('click', function() {
+      cartPanel.style.display = cartPanel.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // ========== INICIALIZAÇÃO ==========
+    document.getElementById('wa-number').innerText = '5581999999999';
+    updateCartUI();
+  </script>
+</body>
+</html>
