@@ -155,8 +155,6 @@
       padding: 18px;
       text-align: center;
       border: 1px solid rgba(0, 255, 0, 0.2);
-      perspective: 1000px;
-      overflow: hidden;
     }
 
     .hero-right img {
@@ -164,8 +162,6 @@
       height: 300px;
       object-fit: cover;
       border-radius: 8px;
-      transform: translateZ(0);
-      will-change: transform;
     }
 
     .hero-caption {
@@ -191,33 +187,13 @@
       border-radius: 10px;
       text-align: center;
       border: 1px solid rgba(0, 255, 0, 0.1);
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.3s ease;
       min-width: 200px;
-      opacity: 0;
-      animation: scrollReveal 0.6s ease-out forwards;
-    }
-
-    .benefit:nth-child(1) { animation-delay: 0.1s; }
-    .benefit:nth-child(2) { animation-delay: 0.2s; }
-    .benefit:nth-child(3) { animation-delay: 0.3s; }
-    .benefit:nth-child(4) { animation-delay: 0.4s; }
-
-    @keyframes scrollReveal {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .benefit:hover {
-      background: rgba(0, 255, 0, 0.1);
-      border-color: rgba(0, 255, 0, 0.5);
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 12px 24px rgba(0, 255, 0, 0.2);
+      background: rgba(0, 255, 0, 0.05);
+      border-color: rgba(0, 255, 0, 0.3);
     }
 
     .benefit-icon {
@@ -283,7 +259,6 @@
       height: 180px;
       object-fit: cover;
       border-radius: 8px;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .card-title {
@@ -320,32 +295,13 @@
       border-radius: 10px;
       text-align: center;
       font-weight: 700;
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.3s ease;
       border: 2px solid var(--accent);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .buy::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--accent);
-      transition: left 0.3s ease;
-      z-index: -1;
     }
 
     .buy:hover {
+      background: var(--accent);
       color: #000;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0, 255, 0, 0.3);
-    }
-
-    .buy:hover::before {
-      left: 0;
     }
 
     /* ===== FOOTER ===== */
@@ -512,39 +468,20 @@
 
     /* ===== MELHORIAS DE HOVER ===== */
     .card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background: #fff;
       color: #111;
       border-radius: 12px;
       padding: 12px;
       overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.3s ease;
       cursor: pointer;
-      border: 2px solid rgba(0, 255, 0, 0.1);
-      opacity: 0;
-      animation: cardReveal 0.6s ease-out forwards;
-    }
-
-    @keyframes cardReveal {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      border: 2px solid transparent;
     }
 
     .card:hover {
-      transform: translateY(-12px) scale(1.03);
-      box-shadow: 0 20px 40px rgba(0, 255, 0, 0.3);
-      border-color: rgba(0, 255, 0, 0.5);
-      background: rgba(255, 255, 255, 1);
-    }
-
-    .card:hover img {
-      transform: scale(1.08);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0, 255, 0, 0.25);
+      border-color: rgba(0, 255, 0, 0.3);
     }
 
     /* ===== CART ===== */
@@ -1040,22 +977,6 @@
         proofElement.innerHTML = '✓ <strong>' + randomSales + ' pessoas</strong> compraram este mês | <strong>' + randomPeople + ' pessoas</strong> estão vendo agora';
       }
     }, 8000);
-
-    // ========== PARALLAX SUAVE NO BANNER ==========
-    const heroRight = document.querySelector('.hero-right img');
-    if(heroRight) {
-      window.addEventListener('scroll', () => {
-        const scrollPosition = window.scrollY;
-        const parallaxValue = scrollPosition * 0.3;
-        heroRight.style.transform = 'translateY(' + parallaxValue + 'px) translateZ(0)';
-      });
-    }
-
-    // ========== ANIMACAO DE CARDS AO CARREGAR ==========
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, index) => {
-      card.style.animationDelay = (index * 0.1) + 's';
-    });
   </script>
 </body>
 </html>
