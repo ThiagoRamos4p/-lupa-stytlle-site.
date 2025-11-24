@@ -15,7 +15,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="LUPA STYLLE - Óculos Premium com Visão Blindada 360°" />
   <meta property="og:description" content="Descubra óculos de qualidade superior com proteção UV real e conforto anatômico. Protocolo Visão Blindada 360° garante resistência e durabilidade." />
-  <meta property="og:image" content="https://peaceful-baklava-57a81e.netlify.app/banner.png" />
+  <meta property="og:image" content="https://peaceful-baklava-57a81e.netlify.app/banner.png?v=2" />
   <meta property="og:url" content="https://peaceful-baklava-57a81e.netlify.app/" />
   <meta property="og:site_name" content="LUPA STYLLE" />
   
@@ -23,7 +23,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="LUPA STYLLE - Óculos Premium" />
   <meta name="twitter:description" content="Compre óculos com Protocolo Visão Blindada 360°. Proteção UV real, resistência a impacto e conforto garantidos." />
-  <meta name="twitter:image" content="https://peaceful-baklava-57a81e.netlify.app/banner.png" />
+  <meta name="twitter:image" content="https://peaceful-baklava-57a81e.netlify.app/banner.png?v=2" />
   
   <!-- Canonical Tag -->
   <link rel="canonical" href="https://peaceful-baklava-57a81e.netlify.app/" />
@@ -147,6 +147,7 @@
       gap: 36px;
       align-items: center;
       padding: 40px 0;
+      min-height: 400px; /* Garante uma altura mínima para o hero */
     }
 
     @media (max-width: 1024px) {
@@ -239,56 +240,46 @@
     }
 
     .hero-right {
+      /* Estilo para o bloco do banner */
       background: linear-gradient(180deg, rgba(0, 255, 0, 0.1), transparent);
       border-radius: 12px;
-      padding: 18px;
+      padding: 0; /* Removido padding para a imagem ocupar todo o espaço */
       text-align: center;
       border: 1px solid rgba(0, 255, 0, 0.2);
       overflow: hidden;
       display: flex;
-      align-items: center;
+      align-items: stretch; /* Alterado para stretch */
       justify-content: center;
-      min-height: 350px;
+      min-height: 350px; /* Altura mínima para desktop */
     }
 
     .hero-right img {
       width: 100%;
-      height: auto;
-      max-height: 320px;
-      object-fit: contain;
-      border-radius: 8px;
+      height: auto; /* Alterado para auto */
+      object-fit: cover; /* Garante que a imagem cubra o container sem distorcer */
+      border-radius: 12px; /* Arredondamento igual ao container */
+      transition: none; /* Removido o efeito de transição/parallax que estava bugando */
+      transform: none;
     }
 
     @media (max-width: 1024px) {
       .hero-right {
         min-height: 300px;
       }
-
-      .hero-right img {
-        max-height: 280px;
-      }
     }
 
     @media (max-width: 768px) {
       .hero-right {
         min-height: 280px;
-        padding: 16px;
-      }
-
-      .hero-right img {
-        max-height: 260px;
+        padding: 0;
       }
     }
 
     @media (max-width: 480px) {
       .hero-right {
-        min-height: 240px;
-        padding: 12px;
+        min-height: 200px; /* Altura menor para mobile */
+        padding: 0;
         margin-top: 16px;
-      }
-
-      .hero-right img {
-        max-height: 220px;
       }
     }
 
