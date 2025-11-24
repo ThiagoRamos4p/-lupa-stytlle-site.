@@ -244,53 +244,19 @@
     /* ===== SECTIONS ===== */
     .section {
       margin-top: 48px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(0, 255, 0, 0.1);
-    }
-
-    .section:last-of-type {
-      border-bottom: none;
     }
 
     .section-title {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
+      align-items: end;
+      justify-content: space-between;
       margin: 24px 0;
-      gap: 8px;
     }
 
     .section-title h3 {
       font-size: 28px;
       margin: 0;
-      background: linear-gradient(90deg, #00ff00, #00cc00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: slideIn 0.6s ease-out;
-    }
-
-    @media (max-width: 768px) {
-      .section-title h3 {
-        font-size: 22px;
-      }
-
-      .section {
-        margin-top: 30px;
-        padding-bottom: 30px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .section-title h3 {
-        font-size: 18px;
-      }
-
-      .section {
-        margin-top: 20px;
-        padding-bottom: 20px;
-      }
+      color: #fff;
     }
 
     .section-title a {
@@ -308,27 +274,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 18px;
-    }
-
-    @media (max-width: 1024px) {
-      .grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 16px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 14px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
     }
 
 
@@ -845,40 +790,31 @@
       </div>
     </section>
 
-    <!-- ===== FOTOS/DESTAQUES ===== -->
-    <section id="fotos" class="section">
+    <!-- ===== DESTAQUES ===== -->
+    <section id="destaques" class="section">
       <div class="section-title">
-        <h3>📸 Fotos & Destaques</h3>
-        <p style="color: #999; font-size: 14px; margin-top: 8px;">Confira nossos produtos mais procurados com fotos reais</p>
+        <h3>Destaques</h3>
+        <a href="#novidades">Ver todos ›</a>
       </div>
       <div class="grid" id="productsGrid"></div>
     </section>
 
-    <!-- ===== ACESSÓRIOS ===== -->
-    <section id="acessorios" class="section">
+    <!-- ===== NOVIDADES ===== -->
+    <section id="novidades" class="section">
       <div class="section-title">
-        <h3>🎨 Acessórios Premium</h3>
-        <p style="color: #999; font-size: 14px; margin-top: 8px;">Complemente seu estilo com acessórios exclusivos</p>
-      </div>
-      <div class="grid" id="acessoriosGrid"></div>
-    </section>
-
-    <!-- ===== OFERTAS/PROMOÇÕES ===== -->
-    <section id="ofertas" class="section">
-      <div class="section-title">
-        <h3>🔥 Ofertas & Promoções</h3>
-        <p style="color: #999; font-size: 14px; margin-top: 8px;">Aproveite descontos imperdíveis em produtos selecionados</p>
-      </div>
-      <div class="grid" id="promoGrid"></div>
-    </section>
-
-    <!-- ===== LANÇAMENTOS ===== -->
-    <section id="lancamentos" class="section">
-      <div class="section-title">
-        <h3>⭐ Lançamentos</h3>
-        <p style="color: #999; font-size: 14px; margin-top: 8px;">Novos modelos chegando com a tecnologia Visão Blindada 360°</p>
+        <h3>Novidades</h3>
+        <a href="#promocoes">Ver todos ›</a>
       </div>
       <div class="grid" id="novidadesGrid"></div>
+    </section>
+
+    <!-- ===== PROMOÇÕES ===== -->
+    <section id="promocoes" class="section">
+      <div class="section-title">
+        <h3>Promoções</h3>
+        <a href="#destaques">Voltar ›</a>
+      </div>
+      <div class="grid" id="promoGrid"></div>
     </section>
 
     <!-- ===== FOOTER ===== -->
@@ -956,46 +892,6 @@
         old: 220,
         img: 'imagesproduto5.jpg',
         category: 'novidade'
-      },
-      {
-        id: 6,
-        title: 'ESTOJO PREMIUM COURO',
-        price: 49.99,
-        old: 79.99,
-        img: 'imagesproduto1.jpg',
-        category: 'acessorio'
-      },
-      {
-        id: 7,
-        title: 'CORRENTE PARA OCULOS',
-        price: 29.99,
-        old: 49.99,
-        img: 'imagesproduto2.jpg',
-        category: 'acessorio'
-      },
-      {
-        id: 8,
-        title: 'KIT LIMPEZA PROFISSIONAL',
-        price: 19.99,
-        old: 39.99,
-        img: 'imagesproduto3.jpg',
-        category: 'acessorio'
-      },
-      {
-        id: 9,
-        title: 'JULIET - PLASMA GOLD CAFE PROMOCAO',
-        price: 199.99,
-        old: 300,
-        img: 'imagesproduto1.jpg',
-        category: 'promocao'
-      },
-      {
-        id: 10,
-        title: 'RADAR EV - LENTE VERMELHA DESCONTO',
-        price: 129.99,
-        old: 220,
-        img: 'imagesproduto4.jpg',
-        category: 'promocao'
       }
     ];
 
@@ -1024,14 +920,17 @@
 
     // ========== POPULAR AS GRIDS ==========
     const grid = document.getElementById('productsGrid');
-    const acessoriosGrid = document.getElementById('acessoriosGrid');
     const novGrid = document.getElementById('novidadesGrid');
     const promoGrid = document.getElementById('promoGrid');
 
+    // Destaques: primeiros 3 produtos
     grid.innerHTML = products.filter(p => p.category === 'destaque').map(renderCard).join('');
-    acessoriosGrid.innerHTML = products.filter(p => p.category === 'acessorio').map(renderCard).join('');
-    promoGrid.innerHTML = products.filter(p => p.category === 'promocao').map(renderCard).join('');
+
+    // Novidades: produtos com categoria 'novidade'
     novGrid.innerHTML = products.filter(p => p.category === 'novidade').map(renderCard).join('');
+
+    // Promoções: produtos com desconto > 25%
+    promoGrid.innerHTML = products.filter(p => ((p.old - p.price) / p.old) > 0.25).map(renderCard).join('');
 
     // ========== CARRINHO ==========
     let cart = [];
