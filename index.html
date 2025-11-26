@@ -177,8 +177,17 @@
       height: auto;
       object-fit: cover;
       border-radius: 12px;
-      transition: none;
-      transform: none;
+      transition: transform 0.15s ease-out;
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.02);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .hero-image-top img {
+        /* Desabilitar efeito 3D no mobile para melhor performance */
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.02);
+      }
     }
 
     @media (max-width: 768px) {
@@ -1334,6 +1343,47 @@
     cards.forEach((card, index) => {
       card.style.animationDelay = (index * 0.1) + 's';
     });
+
+    // ========== EFEITO 3D NA IMAGEM DO CIENTISTA ==========
+    const heroImageTop = document.querySelector('.hero-image-top');
+    const heroImage = document.querySelector('.hero-image-top img');
+
+    if (heroImageTop && heroImage) {
+      // Efeito ao mover o mouse
+      heroImageTop.addEventListener('mousemove', (e) => {
+        const rect = heroImageTop.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Calcular a porcentagem de movimento (0 a 1)
+        const xPercent = (x / rect.width) - 0.5;
+        const yPercent = (y / rect.height) - 0.5;
+        
+        // Limitar o ângulo de rotação
+        const rotateX = yPercent * 10; // -5 a 5 graus
+        const rotateY = xPercent * 10; // -5 a 5 graus
+        
+        // Aplicar o efeito 3D
+        heroImage.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+      });
+
+      // Resetar ao sair do elemento
+      heroImageTop.addEventListener('mouseleave', () => {
+        heroImage.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.02)';
+      });
+
+      // Efeito de scroll (parallax suave)
+      window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        const heroPosition = heroImageTop.getBoundingClientRect().top;
+        
+        // Só aplicar o efeito se o elemento estiver visível
+        if (heroPosition < window.innerHeight && heroPosition > -heroImageTop.offsetHeight) {
+          const parallaxValue = scrollPosition * 0.05;
+          heroImage.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.02) translateY(${parallaxValue}px)`;
+        }
+      });
+    }
   </script>
 </body>
 </html>
