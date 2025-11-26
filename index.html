@@ -141,6 +141,65 @@
     }
 
     /* ===== HERO ===== */
+    .hero-full {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 40px 0;
+    }
+
+    @media (max-width: 768px) {
+      .hero-full {
+        padding: 24px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-full {
+        padding: 16px 0;
+      }
+    }
+
+    .hero-image-top {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 255, 0, 0.2);
+      background: linear-gradient(180deg, rgba(0, 255, 0, 0.1), transparent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+    }
+
+    .hero-image-top img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: none;
+      transform: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero-image-top {
+        min-height: 250px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-image-top {
+        min-height: 200px;
+      }
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Manter compatibilidade com a classe .hero se necessário */
     .hero {
       display: grid;
       grid-template-columns: 1fr 420px;
@@ -894,8 +953,14 @@
     </header>
 
     <!-- ===== HERO SECTION ===== -->
-    <section class="hero">
-      <div>
+    <section class="hero-full">
+      <!-- Imagem do Cientista no Topo -->
+      <div class="hero-image-top">
+        <img src="banner.png" alt="Banner LUPA STYLLE - Protocolo Visão Blindada 360° com proteção UV e resistência a impacto" />
+      </div>
+
+      <!-- Conteúdo Abaixo da Imagem -->
+      <div class="hero-content">
         <div class="eyebrow">⚡ Tecnologia Exclusiva</div>
         <h2>Os Únicos Óculos do Brasil com o Protocolo Visão Blindada 360°</h2>
         <p>Enquanto outras lojas vendem réplicas, nós entregamos proteção e estilo. Cada peça é inspecionada em nosso laboratório para garantir resistência a impactos, proteção UV real e conforto anatômico. Isso não é só um óculos, é um LUPA STYLLE.</p>
@@ -918,11 +983,6 @@
             <span class="benefit-desc">WhatsApp & Troca Fácil</span>
           </div>
         </div>
-      </div>
-
-      <div class="hero-right">
-        <img src="banner.png" alt="Banner LUPA STYLLE - Protocolo Visão Blindada 360° com proteção UV e resistência a impacto" />
-        <div class="hero-caption">Proteção + Estilo Garantidos</div>
       </div>
     </section>
 
